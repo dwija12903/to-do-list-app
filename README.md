@@ -51,7 +51,7 @@ Ensure you have the following installed on your machine:
 ### Frontend Setup
 1. Navigate to the frontend directory:
     ```bash
-    cd client
+    cd frontend
     ```
 2. Install dependencies:
     ```bash
@@ -65,7 +65,7 @@ Ensure you have the following installed on your machine:
 ### Backend Setup
 1. Navigate to the backend directory:
     ```bash
-    cd server
+    cd backend
     ```
 2. Install dependencies:
     ```bash
@@ -79,7 +79,7 @@ Ensure you have the following installed on your machine:
     ```
 4. Start the Express server:
     ```bash
-    npm start
+    node server.js
     ```
 
 ---
@@ -105,11 +105,6 @@ Ensure you have the following installed on your machine:
 
 ## 🐛 Contributing
 Contributions are welcome! Please create a pull request or open an issue to discuss changes.
-
----
-
-## 📝 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
