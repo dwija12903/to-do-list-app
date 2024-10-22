@@ -10,12 +10,24 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+    'https://to-do-list-app-lemon-alpha.vercel.app',
+    'https://to-do-app-dwija12.vercel.app'
+];
+
 app.use(cors({
-    origin: 'https://to-do-list-app-lemon-alpha.vercel.app/',
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
     credentials: true
 }));
+
 
 app.use(express.json());
 
