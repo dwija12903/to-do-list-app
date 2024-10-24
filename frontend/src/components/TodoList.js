@@ -1,7 +1,6 @@
-// components/TodoList.js
 import React, { useState } from 'react';
-import TodoItem from './ToDoItem';
-import TodoForm from './ToDoForm';
+import TodoItem from './TodoItem';
+import TodoForm from './TodoForm';
 
 const TodoList = ({ tasks, setTasks, token }) => {
     const [filter, setFilter] = useState('all');
@@ -13,29 +12,34 @@ const TodoList = ({ tasks, setTasks, token }) => {
     });
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-8">
             <TodoForm setTasks={setTasks} token={token} />
-            <div className="flex justify-center space-x-4 mb-6">
+            <div className="flex justify-center space-x-2">
                 {['all', 'active', 'completed'].map((f) => (
                     <button
                         key={f}
                         onClick={() => setFilter(f)}
-                        className={`px-3 py-1 rounded transition duration-300 ease-in-out ${filter === f
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${filter === f
+                                ? 'bg-blue-600 text-white shadow-md transform scale-105'
+                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                             }`}
                     >
                         {f.charAt(0).toUpperCase() + f.slice(1)}
                     </button>
                 ))}
             </div>
-            <div className="space-y-2">
+            <div className="space-y-3">
                 {filteredTasks.map(task => (
                     <TodoItem key={task._id} task={task} setTasks={setTasks} token={token} />
                 ))}
             </div>
             {filteredTasks.length === 0 && (
-                <p className="text-center text-gray-500">No tasks to display.</p>
+                <div className="text-center py-8">
+                    <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    <p className="text-gray-500 text-lg">No tasks to display</p>
+                </div>
             )}
         </div>
     );

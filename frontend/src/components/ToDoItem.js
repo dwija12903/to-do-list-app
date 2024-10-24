@@ -1,4 +1,3 @@
-// components/TodoItem.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../config';
@@ -58,33 +57,51 @@ const TodoItem = ({ task, setTasks, token }) => {
     };
 
     return (
-        <div className={`flex items-center p-3 mb-2 bg-gray-50 rounded border ${task.completed ? 'border-gray-300' : 'border-gray-400'}`}>
-            <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={handleComplete}
-                className="mr-3 h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-            />
-            {isEditing ? (
+        <div className={`group flex items-center p-4 rounded-lg transition-all duration-300 ${task.completed
+                ? 'bg-gray-50 border border-gray-100'
+                : 'bg-white border border-gray-200 shadow-sm hover:shadow-md'
+            }`}>
+            <div className="relative">
                 <input
-                    type="text"
-                    value={editedText}
-                    onChange={(e) => setEditedText(e.target.value)}
-                    className="flex-grow px-2 py-1 mr-3 border-b border-gray-300 focus:outline-none focus:border-blue-500"
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={handleComplete}
+                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 transition-all duration-300"
                 />
-            ) : (
-                <span className={`flex-grow mr-3 ${task.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>{task.text}</span>
-            )}
-            <div className="flex space-x-2">
+                {task.completed && (
+                    <svg className="absolute top-0 left-0 w-5 h-5 text-blue-600 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                )}
+            </div>
+            <div className="flex-grow mx-4">
+                {isEditing ? (
+                    <input
+                        type="text"
+                        value={editedText}
+                        onChange={(e) => setEditedText(e.target.value)}
+                        className="w-full px-3 py-1 rounded border-b-2 border-blue-500 focus:outline-none bg-transparent"
+                        autoFocus
+                    />
+                ) : (
+                    <span className={`text-lg transition-all duration-300 ${task.completed
+                            ? 'line-through text-gray-400'
+                            : 'text-gray-700'
+                        }`}>
+                        {task.text}
+                    </span>
+                )}
+            </div>
+            <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
                     onClick={handleEdit}
-                    className="text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out"
+                    className="px-3 py-1 rounded-md text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors duration-300"
                 >
                     {isEditing ? 'Save' : 'Edit'}
                 </button>
                 <button
                     onClick={handleDelete}
-                    className="text-red-600 hover:text-red-800 transition duration-300 ease-in-out"
+                    className="px-3 py-1 rounded-md text-sm font-medium text-red-600 hover:bg-red-50 transition-colors duration-300"
                 >
                     Delete
                 </button>
