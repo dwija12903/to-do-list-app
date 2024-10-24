@@ -64,7 +64,6 @@ const AuthForm = ({ setToken }) => {
                         placeholder="Enter your password"
                     />
                 </div>
-                // components/AuthForm.js (continued...)
                 {error && (
                     <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm">
                         <svg className="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
