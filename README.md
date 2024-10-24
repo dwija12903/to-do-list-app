@@ -85,9 +85,15 @@ Ensure you have the following installed on your machine:
 ---
 
 ## 🌟 Usage
-1. Register a new account or log in if you already have one.
-2. Manage your tasks by adding, editing, or deleting them.
-3. Use the search bar to quickly find tasks.
+1. Check MongoDB Status: Before starting, ensure that MongoDB is up and running by visiting this link: [Check MongoDB Status](https://to-do-list-app-lemon-alpha.vercel.app/?vercelToolbarCode=uGkfuxixcO0ZjBF)
+2. Visit the App: Once MongoDB is running, go to the app by visiting: [To-Do List App](https://to-do-app-dwija12.vercel.app/)
+3. Create an Account: Register a new account by clicking the Sign Up button and filling in the required details.
+4. Manage Tasks:
+  - Add new tasks by entering the task details and due date.
+  - Edit existing tasks by clicking the Edit button next to a task.
+  - Delete tasks that are no longer needed.
+  - Toggle the completion status of tasks.
+  - Search & Filter: Use the search bar to find specific tasks and filter tasks based on their completion status (completed or pending).
 
 ---
 
